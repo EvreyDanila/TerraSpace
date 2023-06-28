@@ -14,21 +14,23 @@ public class Menu : MonoBehaviour
     {   
         TextMeshProUGUI tmproContinueGame = continueGame.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        if (save.IsSaveGame())
+        continueGame.interactable = false;
+        tmproContinueGame.color = Color.gray;
+
+        if (PlayerPrefs.HasKey("Continue"))
         {
-            continueGame.interactable = true;
-            tmproContinueGame.color = Color.white;
-        }
-        else
-        {
-            continueGame.interactable = false;
-            tmproContinueGame.color = Color.gray;
+            if (PlayerPrefs.GetInt("Continue") == 1)
+            {
+                continueGame.interactable = true;
+                tmproContinueGame.color = Color.white;
+            }
         }
     }
     
     public void NewGame()
     {
         save.SavesDestroy();
+        PlayerPrefs.SetInt("Continue", 1);
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
 

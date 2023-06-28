@@ -40,7 +40,6 @@ public class GameEnd : MonoBehaviour
 
     public void LoadSceneMenu()
     {
-        save.SavesDestroy();
         SceneManager.LoadScene("menu", LoadSceneMode.Single);
     }
 }

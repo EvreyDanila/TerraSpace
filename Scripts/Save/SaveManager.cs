@@ -22,15 +22,15 @@ public static class SaveManager
 
     public static bool IsSaveManager(string fileName)
     {
-        string saveText = File.ReadAllText(Application.persistentDataPath + fileName);
-
-        Debug.Log(saveText);
-
-        if (saveText != "" || saveText is not null)
+        if (File.Exists(Application.persistentDataPath + fileName))
         {
-            return false;
+            string saveText = File.ReadAllText(Application.persistentDataPath + fileName);
+            if (saveText != "")
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     [Serializable]

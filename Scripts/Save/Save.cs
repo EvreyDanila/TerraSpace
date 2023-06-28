@@ -144,4 +144,16 @@ public class Save : MonoBehaviour
         SaveGame();
         SaveHistory();
     }
+
+    private void OnDisable()
+    {
+        SaveGame();
+        SaveHistory();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        SaveGame();
+        SaveHistory();
+    }
 }
